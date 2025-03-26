@@ -6,19 +6,25 @@ import MeetingSetup from '@/components/meetingsetup'
 import { useGetCallById } from '@/hooks/useGetCallById'
 import { useUser } from '@clerk/nextjs'
 import { StreamCall, StreamCallProvider, StreamTheme } from '@stream-io/video-react-sdk'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
-type MeetingProps = {
-  params: { id: string }; 
-};
 
-const Meeting = ({ params }: MeetingProps) => {
+const Meeting = ({ params }: { params: Promise<{ id: string }> }) => {
 
-  const { id } = params;
+  const [meetingId, setMeetingId] = useState<string | null>(null);
   const { user, isLoaded } = useUser();
   const [ isSetupComplete, SetIsSetupComplete] = useState(false);
 
-  const { call, isCallLoading } = useGetCallById(id);
+  useEffect(() => {
+    const fetchParams = async () => {
+      const resolvedParams = await params; // Await the Promise
+      setMeetingId(resolvedParams.id);
+    };
+
+    fetchParams();
+  }, [params]);
+
+  const { call, isCallLoading } = useGetCallById(meetingId ?? "");
 
   if(isCallLoading) return <Loader />
   if(!call) return <p className='text-white text-center mt-10'>Call not found</p>
