@@ -12,7 +12,7 @@ const StreamVideoProvider = ({ children }: { children: ReactNode }) => {
     const[videoClient, setVideoClient] = useState<StreamVideoClient>();
     const { user, isLoaded } = useUser();
 
-    const apikey = "9cmaejqdbw9u" || process.env.NEXT_PUBLIC_STREAM_API_KEY;
+    const apikey = process.env.NEXT_PUBLIC_STREAM_API_KEY;
 
     useEffect(()=>{
         if(!apikey) throw new Error('Stream api key is missing');
