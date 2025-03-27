@@ -80,7 +80,7 @@ const CallList = ({ type }: { type: 'ended' | 'upcoming' | 'recordings'}) => {
         isPreviousMeeting={type === 'ended'}
         buttonIcon1={type === 'recordings' ? '/icons/play.svg' : undefined}
         handleClick={type === 'recordings' ? () => router.push(`${meeting.url}`): () => router.push(`/meeting/${meeting.id}`)}
-        link={type === 'recordings' ? meeting.url : `${process.env.NEXT_PUBLIC_BASE_URL}/meeting/${meeting.id}`}
+        link={type === 'recordings' ? meeting.url : `${meeting.id}`}
         buttonText={type === 'recordings' ? 'Play' : 'Start'}
         />
       )): (
