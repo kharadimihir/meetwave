@@ -165,12 +165,17 @@ const MeetingTypeList = () => {
         title='Type the link here'
         className='text-center'
         buttonText='Join Meeting'
-        handleClick={() => router.push(values.link)}
+        handleClick={() => {
+          console.log("Navigating to:", values.link); 
+          router.push(values.link);
+        }}
+
       >
         <Input 
           placeholder='Meeting link'
           className='border-none bg-[#252A41] focus-visible:ring-0 focus-visible:ring-offset-0'
-          onChange={(e) => setValues({...values, link:e.target.value })}
+          onChange={(e) => setValues({ ...values, link: e.target.value.replace(/\s+/g, '') })}
+
         />
       </MeetingModal>
     </section>
