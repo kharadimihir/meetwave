@@ -20,7 +20,7 @@ const Navbar = () => {
         </p>
         
       </Link>
-      <div className="max-sm:hidden">
+      <div className="hidden md:block">
       <SignedIn>
           <UserButton 
             appearance={{
@@ -36,7 +36,7 @@ const Navbar = () => {
         </SignedIn>
       </div>
 
-      <div className="flex justify-between items-center gap-5 lg:hidden">
+      <div className="flex items-center gap-5 md:hidden">
         <SignedIn>
           <UserButton
           appearance={{
