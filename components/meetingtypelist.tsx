@@ -24,7 +24,7 @@ const MeetingTypeList = () => {
     const [values, setValues] = useState({
       dateTime: new Date(),
       description: '',
-      link: 'https://meetwave-one.vercel.app/meeting/'
+      link: ''
     });
     const [ callDetails, setCallDetails ] = useState<Call>();
 
