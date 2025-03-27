@@ -24,7 +24,7 @@ const MeetingTypeList = () => {
     const [values, setValues] = useState({
       dateTime: new Date(),
       description: '',
-      link: ''
+      link: 'https://meetwave-one.vercel.app/meeting/'
     });
     const [ callDetails, setCallDetails ] = useState<Call>();
 
@@ -66,6 +66,8 @@ const MeetingTypeList = () => {
     }
 
     const meetingLink = `${process.env.NEXT_PUBLIC_BASE_URL}/meeting/${callDetails?.id}`
+    console.log(values.link, meetingLink);
+    
 
   return (
     <section className='grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-4'>
