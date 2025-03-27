@@ -163,7 +163,14 @@ const MeetingTypeList = () => {
         title='Type the link here'
         className='text-center'
         buttonText='Join Meeting'
-        handleClick={() => router.push(values.link)}
+        handleClick={() => {
+          if (values.link && values.link.trim() !== "" && values.link.includes("/meeting/")) {
+            router.push(values.link);
+          } else {
+            console.warn("Meeting ID is missing or invalid.");
+          }
+        }}
+        
       >
         <Input 
           placeholder='Meeting link'
